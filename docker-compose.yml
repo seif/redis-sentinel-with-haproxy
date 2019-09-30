@@ -72,5 +72,48 @@ services:
       - '9003:9000'
       - '8083:80'
       - '7073:70'
+# chaos commands
+  chaos-pause-proxy01:
+    image: gaiaadm/pumba
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: "--log-level info --interval 60s pause --duration 1s re2:proxy01"
+#  chaos-pause-proxy02:
+#    image: gaiaadm/pumba
+#    volumes:
+#      - /var/run/docker.sock:/var/run/docker.sock
+#    command: "--log-level info --interval 60s pause --duration 5s re2:proxy02"
+#  chaos-pause-proxy03:
+#    image: gaiaadm/pumba
+#    volumes:
+#      - /var/run/docker.sock:/var/run/docker.sock
+#    command: "--log-level info --interval 120s pause --duration 10s re2:proxy03"
+#  chaos-pause-redis01:
+#    image: gaiaadm/pumba
+#    volumes:
+#      - /var/run/docker.sock:/var/run/docker.sock
+#    command: "--log-level info --interval 30s pause --duration 10s re2:redis01"
+#  chaos-pause-redis02:
+#    image: gaiaadm/pumba
+#    volumes:
+#      - /var/run/docker.sock:/var/run/docker.sock
+#    command: "--log-level info --interval 30s pause --duration 10s re2:redis02"
+#  chaos-pause-redis03:
+#    image: gaiaadm/pumba
+#    volumes:
+#      - /var/run/docker.sock:/var/run/docker.sock
+#    command: "--log-level info --interval 30s pause --duration 10s re2:redis03"
+#
+#    
+#  chaos-delay-proxy:
+#    image: gaiaadm/pumba
+#    volumes:
+#      - /var/run/docker.sock:/var/run/docker.sock
+#    command: "--log-level debug --interval 45s netem --tc-image gaiadocker/iproute2 --duration 10s delay re2:proxy01"
+#  chaos-delay-redis:
+#    image: gaiaadm/pumba
+#    volumes:
+#      - /var/run/docker.sock:/var/run/docker.sock
+#    command: "--log-level debug --interval 45s netem --tc-image gaiadocker/iproute2 --duration 10s delay re2:proxy01"
 networks:
   host:
