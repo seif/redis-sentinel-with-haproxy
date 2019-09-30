@@ -4,7 +4,8 @@ services:
   redis01:
     build: ./redis
     ports:
-      - 6379:6379
+      - 26381:26379
+      - 6381:6379
     networks:
       - host
     env_file:
@@ -13,7 +14,8 @@ services:
   redis02:
     build: ./redis
     ports:
-      - 6380:6379
+      - 26382:26379
+      - 6382:6379
     depends_on:
       - redis01
     networks:
@@ -24,7 +26,8 @@ services:
   redis03:
     build: ./redis
     ports:
-      - 6381:6379
+      - 26383:26379
+      - 6383:6379
     depends_on:
       - redis01
     networks:
