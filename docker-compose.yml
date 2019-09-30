@@ -35,7 +35,7 @@ services:
     env_file:
       - './redis/env/slave_variables.env'
 
-  proxy:
+  proxy01:
     build: ./haproxy
     depends_on:
       - redis01
@@ -44,8 +44,33 @@ services:
     networks:
       - host
     ports:
-      - '9000:9000'
-      - '8080:80'
+      - '9001:9000'
+      - '8081:80'
+      - '7071:70'
 
+  proxy02:
+    build: ./haproxy
+    depends_on:
+      - redis01
+      - redis02
+      - redis03
+    networks:
+      - host
+    ports:
+      - '9002:9000'
+      - '8082:80'
+      - '7072:70'
+  proxy03:
+    build: ./haproxy
+    depends_on:
+      - redis01
+      - redis02
+      - redis03
+    networks:
+      - host
+    ports:
+      - '9003:9000'
+      - '8083:80'
+      - '7073:70'
 networks:
   host:
